@@ -1,0 +1,29 @@
+{
+  "name": "fft-book",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
+    "lint": "vize lint \"pages/**/*.vue\" \"src/**/*.vue\" \"src/**/*.ts\"",
+    "typecheck": "vize check",
+    "postinstall": "void prepare"
+  },
+  "dependencies": {
+    "hono": "^4.13.17",
+    "katex": "0.16.9",
+    "vue": "^3.5.45"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.8",
+    "@vizejs/vite-plugin": "^0.732.0",
+    "@void/vue": "1.7.0",
+    "tsrs": "0.23.0-ts7.1.0-beta",
+    "vite": "npm:@voidzero-dev/vite-plus-core@^1.5.1",
+    "vite-plus": "^1.5.1",
+    "vize": "^0.732.0",
+    "void": "1.7.0"
+  },
+  "packageManager": "pnpm@12.18.0"
+}
