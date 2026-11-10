@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -45,9 +49,9 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">「再生」して、2 本の矢印の和（赤い点）が実軸の上だけを動くのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dp-f">周波数 f</label
+          <label :for="uid + '-dp-f'">周波数 f</label
           ><input
-            id="dp-f"
+            :id="uid + '-dp-f'"
             type="range"
             data-p="f"
             min="0.25"
@@ -57,9 +61,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="f" />
         </div>
         <div class="row">
-          <label for="dp-ph">位相 φ</label
+          <label :for="uid + '-dp-ph'">位相 φ</label
           ><input
-            id="dp-ph"
+            :id="uid + '-dp-ph'"
             type="range"
             data-p="ph"
             min="-180"
@@ -69,9 +73,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="ph" />
         </div>
         <div class="row">
-          <label for="dp-t">時刻 t</label
+          <label :for="uid + '-dp-t'">時刻 t</label
           ><input
-            id="dp-t"
+            :id="uid + '-dp-t'"
             type="range"
             data-p="t"
             min="0"
@@ -88,7 +92,7 @@ import MathInline from "../components/MathInline.vue";
           >
         </div>
       </div>
-      <div class="plot" style="--h: 600px"><canvas data-c="a" /></div>
+      <div class="plot h-600"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
       <details class="howto">
         <summary>図の読み方</summary>
@@ -163,15 +167,21 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">「複素数」に切り替えて、−f の線が消えると赤い点が円を回り出すのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dt-f">周波数 f</label
-          ><input id="dt-f" type="range" data-p="f" min="0.5" max="3" step="0.5" value="1" /><output
-            data-o="f"
-          />
+          <label :for="uid + '-dt-f'">周波数 f</label
+          ><input
+            :id="uid + '-dt-f'"
+            type="range"
+            data-p="f"
+            min="0.5"
+            max="3"
+            step="0.5"
+            value="1"
+          /><output data-o="f" />
         </div>
         <div class="row">
-          <label for="dt-A">振幅 A</label
+          <label :for="uid + '-dt-A'">振幅 A</label
           ><input
-            id="dt-A"
+            :id="uid + '-dt-A'"
             type="range"
             data-p="A"
             min="0.2"
@@ -181,9 +191,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="A" />
         </div>
         <div class="row">
-          <label for="dt-ph">位相 φ</label
+          <label :for="uid + '-dt-ph'">位相 φ</label
           ><input
-            id="dt-ph"
+            :id="uid + '-dt-ph'"
             type="range"
             data-p="ph"
             min="-180"
@@ -193,9 +203,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="ph" />
         </div>
         <div class="row">
-          <label for="dt-t">時刻 t</label
+          <label :for="uid + '-dt-t'">時刻 t</label
           ><input
-            id="dt-t"
+            :id="uid + '-dt-t'"
             type="range"
             data-p="t"
             min="0"
@@ -213,8 +223,8 @@ import MathInline from "../components/MathInline.vue";
         </div>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 320px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 320px"><canvas data-c="b" /></div>
+        <div class="plot h-320"><canvas data-c="a" /></div>
+        <div class="plot h-320"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">

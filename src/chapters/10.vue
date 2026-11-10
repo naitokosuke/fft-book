@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -22,15 +26,21 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="row">
-          <label for="rp-B">信号の帯域 B</label
-          ><input id="rp-B" type="range" data-p="B" min="1" max="10" step="0.5" value="4" /><output
-            data-o="B"
-          />
+          <label :for="uid + '-rp-B'">信号の帯域 B</label
+          ><input
+            :id="uid + '-rp-B'"
+            type="range"
+            data-p="B"
+            min="1"
+            max="10"
+            step="0.5"
+            value="4"
+          /><output data-o="B" />
         </div>
         <div class="row">
-          <label for="rp-fs">fs</label
+          <label :for="uid + '-rp-fs'">fs</label
           ><input
-            id="rp-fs"
+            :id="uid + '-rp-fs'"
             type="range"
             data-p="fs"
             min="2"
@@ -40,7 +50,7 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="fs" />
         </div>
       </div>
-      <div class="plot" style="--h: 280px"><canvas data-c="a" /></div>
+      <div class="plot h-280"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
     </figure>
     <h3>サンプリング定理</h3>

@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -32,8 +36,8 @@ import MathInline from "../components/MathInline.vue";
         >
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 240px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 240px"><canvas data-c="b" /></div>
+        <div class="plot h-240"><canvas data-c="a" /></div>
+        <div class="plot h-240"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">
@@ -71,9 +75,9 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="row">
-          <label for="dw-fsig">信号の f</label
+          <label :for="uid + '-dw-fsig'">信号の f</label
           ><input
-            id="dw-fsig"
+            :id="uid + '-dw-fsig'"
             type="range"
             data-p="fsig"
             min="1"
@@ -83,9 +87,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="fsig" />
         </div>
         <div class="row">
-          <label for="dw-fw">巻き付け f</label
+          <label :for="uid + '-dw-fw'">巻き付け f</label
           ><input
-            id="dw-fw"
+            :id="uid + '-dw-fw'"
             type="range"
             data-p="fw"
             min="0"
@@ -95,10 +99,16 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="fw" />
         </div>
         <div class="row">
-          <label for="dw-t">時刻 t</label
-          ><input id="dw-t" type="range" data-p="t" min="0" max="4" step="any" value="0.6" /><output
-            data-o="t"
-          />
+          <label :for="uid + '-dw-t'">時刻 t</label
+          ><input
+            :id="uid + '-dw-t'"
+            type="range"
+            data-p="t"
+            min="0"
+            max="4"
+            step="any"
+            value="0.6"
+          /><output data-o="t" />
         </div>
         <div class="btns">
           <button type="button" data-play="t">▶ 巻き付けを再生</button
@@ -108,10 +118,10 @@ import MathInline from "../components/MathInline.vue";
       </div>
       <div class="plots-col">
         <div class="plots2">
-          <div class="plot" style="--h: 320px"><canvas data-c="a" /></div>
-          <div class="plot" style="--h: 320px"><canvas data-c="b" /></div>
+          <div class="plot h-320"><canvas data-c="a" /></div>
+          <div class="plot h-320"><canvas data-c="b" /></div>
         </div>
-        <div class="plot" style="--h: 180px"><canvas data-c="c" /></div>
+        <div class="plot h-180"><canvas data-c="c" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">

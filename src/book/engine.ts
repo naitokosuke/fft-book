@@ -1018,7 +1018,7 @@ export function mountBook(): void {
         on.length
           ? "x(t) = " +
               on
-                .map(([c, i]) => `<span style="color:var(${SYC[i]})">${syLbl(c, i)}</span>`)
+                .map(([c, i]) => `<span class="fg-${SYC[i]!.slice(2)}">${syLbl(c, i)}</span>`)
                 .join(" + ")
           : "x(t) = 0（成分がすべてオフ）",
       );

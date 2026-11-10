@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -20,9 +24,9 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">振幅比を動かして、10 倍ごとに 20 dB ずつ変わるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dd-e">振幅比</label
+          <label :for="uid + '-dd-e'">振幅比</label
           ><input
-            id="dd-e"
+            :id="uid + '-dd-e'"
             type="range"
             data-p="e"
             min="-5"
@@ -32,7 +36,7 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="e" />
         </div>
       </div>
-      <div class="plot" style="--h: 100px"><canvas data-c="a" /></div>
+      <div class="plot h-100"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
       <details class="howto">
         <summary>図の読み方</summary>
@@ -44,8 +48,8 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">N を大きくして、信号のピークはそのままノイズ床だけが下がるのを見る</p>
       <div class="dc">
         <div class="sel">
-          <label for="dn-N">点数 N</label
-          ><select id="dn-N" data-p="N">
+          <label :for="uid + '-dn-N'">点数 N</label
+          ><select :id="uid + '-dn-N'" data-p="N">
             <option value="64">64</option>
             <option value="256" selected>256</option>
             <option value="1024">1024</option>
@@ -54,9 +58,9 @@ import MathInline from "../components/MathInline.vue";
           </select>
         </div>
         <div class="row">
-          <label for="dn-A">信号の振幅</label
+          <label :for="uid + '-dn-A'">信号の振幅</label
           ><input
-            id="dn-A"
+            :id="uid + '-dn-A'"
             type="range"
             data-p="A"
             min="0.01"
@@ -67,11 +71,11 @@ import MathInline from "../components/MathInline.vue";
         </div>
       </div>
       <div class="legend">
-        <span><i style="background: var(--accent)" />スペクトル</span
-        ><span><i style="background: var(--trace3)" />ノイズ床（中央値）</span
-        ><span><i style="background: var(--trace2)" />125 Hz の信号</span>
+        <span><i class="bg-accent" />スペクトル</span
+        ><span><i class="bg-trace3" />ノイズ床（中央値）</span
+        ><span><i class="bg-trace2" />125 Hz の信号</span>
       </div>
-      <div class="plot" style="--h: 230px"><canvas data-c="a" /></div>
+      <div class="plot h-230"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
       <details class="howto">
         <summary>図の読み方</summary>
@@ -95,9 +99,9 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">ずれを 0 から 0.5 へ動かし、裾が一気に持ち上がるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dl-dl">ビンからのずれ</label
+          <label :for="uid + '-dl-dl'">ビンからのずれ</label
           ><input
-            id="dl-dl"
+            :id="uid + '-dl-dl'"
             type="range"
             data-p="dl"
             min="0"
@@ -107,8 +111,8 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="dl" />
         </div>
         <div class="sel">
-          <label for="dl-win">窓関数</label
-          ><select id="dl-win" data-p="win">
+          <label :for="uid + '-dl-win'">窓関数</label
+          ><select :id="uid + '-dl-win'" data-p="win">
             <option value="rect" selected>矩形</option>
             <option value="hann">ハン</option>
             <option value="hamming">ハミング</option>
@@ -118,13 +122,13 @@ import MathInline from "../components/MathInline.vue";
         </div>
       </div>
       <div class="legend">
-        <span><i style="background: var(--trace2)" />DFT のビン</span
-        ><span><i style="background: var(--accent)" />本当のスペクトル</span
-        ><span><i style="background: var(--trace3)" />窓 w[n]</span>
+        <span><i class="bg-trace2" />DFT のビン</span
+        ><span><i class="bg-accent" />本当のスペクトル</span
+        ><span><i class="bg-trace3" />窓 w[n]</span>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 240px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 240px"><canvas data-c="b" /></div>
+        <div class="plot h-240"><canvas data-c="a" /></div>
+        <div class="plot h-240"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">
@@ -149,19 +153,15 @@ import MathInline from "../components/MathInline.vue";
       <div class="dh"><span class="pill">TRY</span><span>窓関数を見比べる</span></div>
       <p class="try-line">窓の名前にカーソルを置いて、形（左）とスペクトルの裾（右）を見比べる</p>
       <div class="wins">
-        <button type="button" data-win="rect"><i style="background: var(--ink)" />矩形</button
-        ><button type="button" data-win="hann"><i style="background: var(--accent)" />ハン</button
-        ><button type="button" data-win="hamming">
-          <i style="background: var(--accent2)" />ハミング</button
-        ><button type="button" data-win="blackman">
-          <i style="background: var(--trace3)" />ブラックマン</button
-        ><button type="button" data-win="flattop">
-          <i style="background: var(--trace2)" />フラットトップ
-        </button>
+        <button type="button" data-win="rect"><i class="bg-ink" />矩形</button
+        ><button type="button" data-win="hann"><i class="bg-accent" />ハン</button
+        ><button type="button" data-win="hamming"><i class="bg-accent2" />ハミング</button
+        ><button type="button" data-win="blackman"><i class="bg-trace3" />ブラックマン</button
+        ><button type="button" data-win="flattop"><i class="bg-trace2" />フラットトップ</button>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 260px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 260px"><canvas data-c="b" /></div>
+        <div class="plot h-260"><canvas data-c="a" /></div>
+        <div class="plot h-260"><canvas data-c="b" /></div>
       </div>
       <div class="kv" data-o="kv" />
       <details class="howto">
@@ -247,14 +247,20 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">周波数の差を小さくしていき、2 つの山が 1 つにくっつく境目を探す</p>
       <div class="dc">
         <div class="row">
-          <label for="dr-d">周波数の差</label
-          ><input id="dr-d" type="range" data-p="d" min="1" max="60" step="0.5" value="12" /><output
-            data-o="d"
-          />
+          <label :for="uid + '-dr-d'">周波数の差</label
+          ><input
+            :id="uid + '-dr-d'"
+            type="range"
+            data-p="d"
+            min="1"
+            max="60"
+            step="0.5"
+            value="12"
+          /><output data-o="d" />
         </div>
         <div class="sel">
-          <label for="dr-N">点数 N</label
-          ><select id="dr-N" data-p="N">
+          <label :for="uid + '-dr-N'">点数 N</label
+          ><select :id="uid + '-dr-N'" data-p="N">
             <option value="16">16</option>
             <option value="32">32</option>
             <option value="64" selected>64</option>
@@ -263,27 +269,27 @@ import MathInline from "../components/MathInline.vue";
           </select>
         </div>
         <div class="sel">
-          <label for="dr-pad">ゼロ詰め</label
-          ><select id="dr-pad" data-p="pad">
+          <label :for="uid + '-dr-pad'">ゼロ詰め</label
+          ><select :id="uid + '-dr-pad'" data-p="pad">
             <option value="1">×1（なし）</option>
             <option value="4" selected>×4</option>
             <option value="16">×16</option>
           </select>
         </div>
         <div class="sel">
-          <label for="dr-win">窓</label
-          ><select id="dr-win" data-p="win">
+          <label :for="uid + '-dr-win'">窓</label
+          ><select :id="uid + '-dr-win'" data-p="win">
             <option value="rect" selected>矩形</option>
             <option value="hann">ハン</option>
           </select>
         </div>
       </div>
       <div class="legend">
-        <span><i style="background: var(--trace2)" />N 点の FFT（ビン）</span
-        ><span><i style="background: var(--accent)" />ゼロ詰め後</span
-        ><span><i style="background: var(--muted)" />本当の周波数</span>
+        <span><i class="bg-trace2" />N 点の FFT（ビン）</span
+        ><span><i class="bg-accent" />ゼロ詰め後</span
+        ><span><i class="bg-muted" />本当の周波数</span>
       </div>
-      <div class="plot" style="--h: 230px"><canvas data-c="a" /></div>
+      <div class="plot h-230"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
       <details class="howto">
         <summary>図の読み方</summary>
@@ -310,8 +316,8 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="sel">
-          <label for="ds-L">窓の長さ</label
-          ><select id="ds-L" data-p="L">
+          <label :for="uid + '-ds-L'">窓の長さ</label
+          ><select :id="uid + '-ds-L'" data-p="L">
             <option value="16">16 点 = 16 ms</option>
             <option value="32">32 点 = 32 ms</option>
             <option value="64" selected>64 点 = 64 ms</option>
@@ -320,7 +326,7 @@ import MathInline from "../components/MathInline.vue";
           </select>
         </div>
       </div>
-      <div class="plot" style="--h: 300px"><canvas data-c="a" /></div>
+      <div class="plot h-300"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
       <details class="howto">
         <summary>図の読み方</summary>

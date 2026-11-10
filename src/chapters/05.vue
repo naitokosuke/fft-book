@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -29,16 +33,16 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">ω を −3π〜3π まで見て、同じ形が 2π ごとに繰り返されるのを確かめる</p>
       <div class="dc">
         <div class="sel">
-          <label for="d-dtft-kind">信号</label
-          ><select id="d-dtft-kind" data-p="kind">
+          <label :for="uid + '-d-dtft-kind'">信号</label
+          ><select :id="uid + '-d-dtft-kind'" data-p="kind">
             <option value="rect" selected>矩形パルス</option>
             <option value="cos">cos 波 × なめらかな窓</option>
           </select>
         </div>
         <div class="row">
-          <label for="d-dtft-L">パルスの長さ</label
+          <label :for="uid + '-d-dtft-L'">パルスの長さ</label
           ><input
-            id="d-dtft-L"
+            :id="uid + '-d-dtft-L'"
             type="range"
             data-p="L"
             min="1"
@@ -49,8 +53,8 @@ import MathInline from "../components/MathInline.vue";
         </div>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 240px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 240px"><canvas data-c="b" /></div>
+        <div class="plot h-240"><canvas data-c="a" /></div>
+        <div class="plot h-240"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
     </figure>

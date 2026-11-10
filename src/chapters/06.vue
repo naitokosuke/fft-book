@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -30,16 +34,16 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="sel">
-          <label for="d-dtft2-kind">信号</label
-          ><select id="d-dtft2-kind" data-p="kind">
+          <label :for="uid + '-d-dtft2-kind'">信号</label
+          ><select :id="uid + '-d-dtft2-kind'" data-p="kind">
             <option value="rect" selected>矩形パルス</option>
             <option value="cos">cos 波 × なめらかな窓</option>
           </select>
         </div>
         <div class="row">
-          <label for="d-dtft2-L">パルスの長さ</label
+          <label :for="uid + '-d-dtft2-L'">パルスの長さ</label
           ><input
-            id="d-dtft2-L"
+            :id="uid + '-d-dtft2-L'"
             type="range"
             data-p="L"
             min="1"
@@ -49,9 +53,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="L" />
         </div>
         <div class="row">
-          <label for="d-dtft2-N">DFT の点数 N</label
+          <label :for="uid + '-d-dtft2-N'">DFT の点数 N</label
           ><input
-            id="d-dtft2-N"
+            :id="uid + '-d-dtft2-N'"
             type="range"
             data-p="N"
             min="16"
@@ -62,8 +66,8 @@ import MathInline from "../components/MathInline.vue";
         </div>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 240px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 240px"><canvas data-c="b" /></div>
+        <div class="plot h-240"><canvas data-c="a" /></div>
+        <div class="plot h-240"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
     </figure>
@@ -82,10 +86,16 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">左の棒を上下にドラッグして信号を描き、右の |X[k]| が変わるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dh-k">ビン k</label
-          ><input id="dh-k" type="range" data-p="k" min="0" max="7" step="1" value="1" /><output
-            data-o="k"
-          />
+          <label :for="uid + '-dh-k'">ビン k</label
+          ><input
+            :id="uid + '-dh-k'"
+            type="range"
+            data-p="k"
+            min="0"
+            max="7"
+            step="1"
+            value="1"
+          /><output data-o="k" />
         </div>
         <div class="btns">
           <span class="t">信号：</span><button type="button" data-sig="imp">インパルス</button
@@ -97,13 +107,13 @@ import MathInline from "../components/MathInline.vue";
         </div>
       </div>
       <div class="legend">
-        <span><i style="background: var(--trace2)" />x[n]（上下にドラッグ）</span
-        ><span><i style="background: var(--accent)" />cos(2πkn/8)</span
-        ><span><i style="background: var(--trace3)" />−sin(2πkn/8)</span>
+        <span><i class="bg-trace2" />x[n]（上下にドラッグ）</span
+        ><span><i class="bg-accent" />cos(2πkn/8)</span
+        ><span><i class="bg-trace3" />−sin(2πkn/8)</span>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 230px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 230px"><canvas data-c="b" /></div>
+        <div class="plot h-230"><canvas data-c="a" /></div>
+        <div class="plot h-230"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">
@@ -129,24 +139,30 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="sel">
-          <label for="dk-sig">信号</label
-          ><select id="dk-sig" data-p="sig">
+          <label :for="uid + '-dk-sig'">信号</label
+          ><select :id="uid + '-dk-sig'" data-p="sig">
             <option value="two" selected>50 Hz + 120 Hz</option>
             <option value="one">50 Hz だけ</option>
             <option value="noisy">50 Hz + 120 Hz + ノイズ</option>
           </select>
         </div>
         <div class="row">
-          <label for="dk-k">ビン k</label
-          ><input id="dk-k" type="range" data-p="k" min="0" max="32" step="any" value="3" /><output
-            data-o="k"
-          />
+          <label :for="uid + '-dk-k'">ビン k</label
+          ><input
+            :id="uid + '-dk-k'"
+            type="range"
+            data-p="k"
+            min="0"
+            max="32"
+            step="any"
+            value="3"
+          /><output data-o="k" />
         </div>
         <div class="btns"><button type="button" data-play>▶ k を 0 から順に動かす</button></div>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 320px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 320px"><canvas data-c="b" /></div>
+        <div class="plot h-320"><canvas data-c="a" /></div>
+        <div class="plot h-320"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">

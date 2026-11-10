@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -18,9 +22,9 @@ import MathBlock from "../components/MathBlock.vue";
       </p>
       <div class="dc">
         <div class="row">
-          <label for="sh-tau">ずらす量</label
+          <label :for="uid + '-sh-tau'">ずらす量</label
           ><input
-            id="sh-tau"
+            :id="uid + '-sh-tau'"
             type="range"
             data-p="tau"
             min="-10"
@@ -30,10 +34,10 @@ import MathBlock from "../components/MathBlock.vue";
           /><output data-o="tau" />
         </div>
       </div>
-      <div class="plot" style="--h: 190px"><canvas data-c="a" /></div>
+      <div class="plot h-190"><canvas data-c="a" /></div>
       <div class="plots2">
-        <div class="plot" style="--h: 220px"><canvas data-c="b" /></div>
-        <div class="plot" style="--h: 220px"><canvas data-c="c" /></div>
+        <div class="plot h-220"><canvas data-c="b" /></div>
+        <div class="plot h-220"><canvas data-c="c" /></div>
       </div>
       <div class="read" data-o="read" />
     </figure>
@@ -51,9 +55,9 @@ import MathBlock from "../components/MathBlock.vue";
       <p class="try-line">残す本数を 2 から増やしていき、ノイズが戻ってくるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dn2-s">ノイズ σ</label
+          <label :for="uid + '-dn2-s'">ノイズ σ</label
           ><input
-            id="dn2-s"
+            :id="uid + '-dn2-s'"
             type="range"
             data-p="s"
             min="0"
@@ -63,20 +67,26 @@ import MathBlock from "../components/MathBlock.vue";
           /><output data-o="s" />
         </div>
         <div class="row">
-          <label for="dn2-K">残す本数</label
-          ><input id="dn2-K" type="range" data-p="K" min="1" max="65" step="1" value="2" /><output
-            data-o="K"
-          />
+          <label :for="uid + '-dn2-K'">残す本数</label
+          ><input
+            :id="uid + '-dn2-K'"
+            type="range"
+            data-p="K"
+            min="1"
+            max="65"
+            step="1"
+            value="2"
+          /><output data-o="K" />
         </div>
       </div>
       <div class="legend">
-        <span><i style="background: var(--trace2)" />ノイズを含むサンプル</span
-        ><span><i style="background: var(--muted)" />元の信号（ノイズなし）</span
-        ><span><i style="background: var(--accent)" />残した成分だけで逆 FFT</span>
+        <span><i class="bg-trace2" />ノイズを含むサンプル</span
+        ><span><i class="bg-muted" />元の信号（ノイズなし）</span
+        ><span><i class="bg-accent" />残した成分だけで逆 FFT</span>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 300px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 300px"><canvas data-c="b" /></div>
+        <div class="plot h-300"><canvas data-c="a" /></div>
+        <div class="plot h-300"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">

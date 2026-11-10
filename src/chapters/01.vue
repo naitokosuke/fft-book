@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -26,17 +30,15 @@ import MathInline from "../components/MathInline.vue";
         ><button type="button" data-syp="rnd">ランダム</button>
       </div>
       <div class="comps4">
-        <div class="cc" data-card="0" style="--rc: var(--accent)">
+        <div class="cc rc-accent" data-card="0">
           <label class="ck"
-            ><input type="checkbox" data-p="c0on" checked /><span
-              class="sw"
-              style="background: var(--accent)"
-            />成分 1</label
+            ><input type="checkbox" data-p="c0on" checked /><span class="sw bg-accent" />成分
+            1</label
           >
           <div class="row">
-            <label for="sy0f" title="周波数 f">f</label
+            <label :for="uid + '-sy0f'" title="周波数 f">f</label
             ><input
-              id="sy0f"
+              :id="uid + '-sy0f'"
               type="range"
               data-p="c0f"
               min="0.5"
@@ -46,9 +48,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c0f" />
           </div>
           <div class="row">
-            <label for="sy0a" title="振幅 A">A</label
+            <label :for="uid + '-sy0a'" title="振幅 A">A</label
             ><input
-              id="sy0a"
+              :id="uid + '-sy0a'"
               type="range"
               data-p="c0a"
               min="0"
@@ -58,9 +60,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c0a" />
           </div>
           <div class="row">
-            <label for="sy0p" title="位相 φ">φ</label
+            <label :for="uid + '-sy0p'" title="位相 φ">φ</label
             ><input
-              id="sy0p"
+              :id="uid + '-sy0p'"
               type="range"
               data-p="c0p"
               min="-180"
@@ -70,17 +72,15 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c0p" />
           </div>
         </div>
-        <div class="cc" data-card="1" style="--rc: var(--trace3)">
+        <div class="cc rc-trace3" data-card="1">
           <label class="ck"
-            ><input type="checkbox" data-p="c1on" checked /><span
-              class="sw"
-              style="background: var(--trace3)"
-            />成分 2</label
+            ><input type="checkbox" data-p="c1on" checked /><span class="sw bg-trace3" />成分
+            2</label
           >
           <div class="row">
-            <label for="sy1f" title="周波数 f">f</label
+            <label :for="uid + '-sy1f'" title="周波数 f">f</label
             ><input
-              id="sy1f"
+              :id="uid + '-sy1f'"
               type="range"
               data-p="c1f"
               min="0.5"
@@ -90,9 +90,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c1f" />
           </div>
           <div class="row">
-            <label for="sy1a" title="振幅 A">A</label
+            <label :for="uid + '-sy1a'" title="振幅 A">A</label
             ><input
-              id="sy1a"
+              :id="uid + '-sy1a'"
               type="range"
               data-p="c1a"
               min="0"
@@ -102,9 +102,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c1a" />
           </div>
           <div class="row">
-            <label for="sy1p" title="位相 φ">φ</label
+            <label :for="uid + '-sy1p'" title="位相 φ">φ</label
             ><input
-              id="sy1p"
+              :id="uid + '-sy1p'"
               type="range"
               data-p="c1p"
               min="-180"
@@ -114,17 +114,14 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c1p" />
           </div>
         </div>
-        <div class="cc" data-card="2" style="--rc: var(--trace2)">
+        <div class="cc rc-trace2" data-card="2">
           <label class="ck"
-            ><input type="checkbox" data-p="c2on" /><span
-              class="sw"
-              style="background: var(--trace2)"
-            />成分 3</label
+            ><input type="checkbox" data-p="c2on" /><span class="sw bg-trace2" />成分 3</label
           >
           <div class="row">
-            <label for="sy2f" title="周波数 f">f</label
+            <label :for="uid + '-sy2f'" title="周波数 f">f</label
             ><input
-              id="sy2f"
+              :id="uid + '-sy2f'"
               type="range"
               data-p="c2f"
               min="0.5"
@@ -134,9 +131,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c2f" />
           </div>
           <div class="row">
-            <label for="sy2a" title="振幅 A">A</label
+            <label :for="uid + '-sy2a'" title="振幅 A">A</label
             ><input
-              id="sy2a"
+              :id="uid + '-sy2a'"
               type="range"
               data-p="c2a"
               min="0"
@@ -146,9 +143,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c2a" />
           </div>
           <div class="row">
-            <label for="sy2p" title="位相 φ">φ</label
+            <label :for="uid + '-sy2p'" title="位相 φ">φ</label
             ><input
-              id="sy2p"
+              :id="uid + '-sy2p'"
               type="range"
               data-p="c2p"
               min="-180"
@@ -158,17 +155,14 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c2p" />
           </div>
         </div>
-        <div class="cc" data-card="3" style="--rc: var(--ink)">
+        <div class="cc rc-ink" data-card="3">
           <label class="ck"
-            ><input type="checkbox" data-p="c3on" /><span
-              class="sw"
-              style="background: var(--ink)"
-            />成分 4</label
+            ><input type="checkbox" data-p="c3on" /><span class="sw bg-ink" />成分 4</label
           >
           <div class="row">
-            <label for="sy3f" title="周波数 f">f</label
+            <label :for="uid + '-sy3f'" title="周波数 f">f</label
             ><input
-              id="sy3f"
+              :id="uid + '-sy3f'"
               type="range"
               data-p="c3f"
               min="0.5"
@@ -178,9 +172,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c3f" />
           </div>
           <div class="row">
-            <label for="sy3a" title="振幅 A">A</label
+            <label :for="uid + '-sy3a'" title="振幅 A">A</label
             ><input
-              id="sy3a"
+              :id="uid + '-sy3a'"
               type="range"
               data-p="c3a"
               min="0"
@@ -190,9 +184,9 @@ import MathInline from "../components/MathInline.vue";
             /><output data-o="c3a" />
           </div>
           <div class="row">
-            <label for="sy3p" title="位相 φ">φ</label
+            <label :for="uid + '-sy3p'" title="位相 φ">φ</label
             ><input
-              id="sy3p"
+              :id="uid + '-sy3p'"
               type="range"
               data-p="c3p"
               min="-180"
@@ -206,11 +200,11 @@ import MathInline from "../components/MathInline.vue";
       <div class="sy-plots">
         <div class="pl-wrap">
           <div class="pl-h">時間領域 ─ 4 つの波とその合計</div>
-          <div class="plot" style="--h: 420px"><canvas data-c="a" /></div>
+          <div class="plot h-420"><canvas data-c="a" /></div>
         </div>
         <div class="pl-wrap">
           <div class="pl-h">周波数領域 ─ スペクトル</div>
-          <div class="plot" style="--h: 420px"><canvas data-c="b" /></div>
+          <div class="plot h-420"><canvas data-c="b" /></div>
         </div>
       </div>
       <div class="read" data-o="read" />
@@ -255,15 +249,21 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">成分を増やしても、段差の横の出っ張りが消えないのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="dg-K">使う成分の数</label
-          ><input id="dg-K" type="range" data-p="K" min="1" max="60" step="1" value="3" /><output
-            data-o="K"
-          />
+          <label :for="uid + '-dg-K'">使う成分の数</label
+          ><input
+            :id="uid + '-dg-K'"
+            type="range"
+            data-p="K"
+            min="1"
+            max="60"
+            step="1"
+            value="3"
+          /><output data-o="K" />
         </div>
       </div>
       <div class="plots2">
-        <div class="plot" style="--h: 230px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 230px"><canvas data-c="b" /></div>
+        <div class="plot h-230"><canvas data-c="a" /></div>
+        <div class="plot h-230"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">
@@ -298,9 +298,9 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="row">
-          <label for="mt-fp">ものさし</label
+          <label :for="uid + '-mt-fp'">ものさし</label
           ><input
-            id="mt-fp"
+            :id="uid + '-mt-fp'"
             type="range"
             data-p="fp"
             min="0"
@@ -313,9 +313,9 @@ import MathInline from "../components/MathInline.vue";
       </div>
       <div class="read" data-o="read" />
       <div class="plots-col">
-        <div class="plot" style="--h: 190px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 170px"><canvas data-c="b" /></div>
-        <div class="plot" style="--h: 220px"><canvas data-c="c" /></div>
+        <div class="plot h-190"><canvas data-c="a" /></div>
+        <div class="plot h-170"><canvas data-c="b" /></div>
+        <div class="plot h-220"><canvas data-c="c" /></div>
       </div>
       <details class="howto">
         <summary>図の読み方</summary>
@@ -396,31 +396,43 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="sel">
-          <label for="or-kind">組み合わせ</label
-          ><select id="or-kind" data-p="kind">
+          <label :for="uid + '-or-kind'">組み合わせ</label
+          ><select :id="uid + '-or-kind'" data-p="kind">
             <option value="cc" selected>cos × cos</option>
             <option value="ss">sin × sin</option>
             <option value="sc">sin × cos</option>
           </select>
         </div>
         <div class="row">
-          <label for="or-m">m</label
-          ><input id="or-m" type="range" data-p="m" min="1" max="6" step="1" value="2" /><output
-            data-o="m"
-          />
+          <label :for="uid + '-or-m'">m</label
+          ><input
+            :id="uid + '-or-m'"
+            type="range"
+            data-p="m"
+            min="1"
+            max="6"
+            step="1"
+            value="2"
+          /><output data-o="m" />
         </div>
         <div class="row">
-          <label for="or-k">k</label
-          ><input id="or-k" type="range" data-p="k" min="1" max="6" step="1" value="3" /><output
-            data-o="k"
-          />
+          <label :for="uid + '-or-k'">k</label
+          ><input
+            :id="uid + '-or-k'"
+            type="range"
+            data-p="k"
+            min="1"
+            max="6"
+            step="1"
+            value="3"
+          /><output data-o="k" />
         </div>
       </div>
       <div class="read" data-o="read" />
       <div class="plots-col">
-        <div class="plot" style="--h: 190px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 190px"><canvas data-c="b" /></div>
-        <div class="plot" style="--h: 206px"><canvas data-c="c" /></div>
+        <div class="plot h-190"><canvas data-c="a" /></div>
+        <div class="plot h-190"><canvas data-c="b" /></div>
+        <div class="plot h-206"><canvas data-c="c" /></div>
       </div>
       <details class="howto">
         <summary>図の読み方</summary>
@@ -453,15 +465,21 @@ import MathInline from "../components/MathInline.vue";
       </p>
       <div class="dc">
         <div class="row">
-          <label for="pb-f">信号の f</label
-          ><input id="pb-f" type="range" data-p="f" min="1" max="5" step="1" value="3" /><output
-            data-o="f"
-          />
+          <label :for="uid + '-pb-f'">信号の f</label
+          ><input
+            :id="uid + '-pb-f'"
+            type="range"
+            data-p="f"
+            min="1"
+            max="5"
+            step="1"
+            value="3"
+          /><output data-o="f" />
         </div>
         <div class="row">
-          <label for="pb-A">振幅 A</label
+          <label :for="uid + '-pb-A'">振幅 A</label
           ><input
-            id="pb-A"
+            :id="uid + '-pb-A'"
             type="range"
             data-p="A"
             min="0.2"
@@ -471,9 +489,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="A" />
         </div>
         <div class="row">
-          <label for="pb-ph">位相 φ</label
+          <label :for="uid + '-pb-ph'">位相 φ</label
           ><input
-            id="pb-ph"
+            :id="uid + '-pb-ph'"
             type="range"
             data-p="ph"
             min="-180"
@@ -483,9 +501,9 @@ import MathInline from "../components/MathInline.vue";
           /><output data-o="ph" />
         </div>
         <div class="row">
-          <label for="pb-fp">測る f<sub>p</sub></label
+          <label :for="uid + '-pb-fp'">測る f<sub>p</sub></label
           ><input
-            id="pb-fp"
+            :id="uid + '-pb-fp'"
             type="range"
             data-p="fp"
             min="0.5"
@@ -497,13 +515,13 @@ import MathInline from "../components/MathInline.vue";
       </div>
       <div class="left-stack">
         <div class="pl-h">2 つの平均を 1 本の矢印に</div>
-        <div class="plot" style="--h: 280px"><canvas data-c="d" /></div>
+        <div class="plot h-280"><canvas data-c="d" /></div>
         <div class="read" data-o="read" />
       </div>
       <div class="plots-col">
-        <div class="plot" style="--h: 170px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 170px"><canvas data-c="b" /></div>
-        <div class="plot" style="--h: 196px"><canvas data-c="c" /></div>
+        <div class="plot h-170"><canvas data-c="a" /></div>
+        <div class="plot h-170"><canvas data-c="b" /></div>
+        <div class="plot h-196"><canvas data-c="c" /></div>
       </div>
       <details class="howto">
         <summary>図の読み方</summary>

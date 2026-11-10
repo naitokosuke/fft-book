@@ -2626,3 +2626,102 @@ html.rv .rv-item.rv-in {
     font-size: 1.12em;
   }
 }
+
+/* ---------- utility classes (replace inline style attributes) ---------- */
+/* plot heights: .plot reads --h */
+.h-100 {
+  --h: 100px;
+}
+.h-124 {
+  --h: 124px;
+}
+.h-170 {
+  --h: 170px;
+}
+.h-180 {
+  --h: 180px;
+}
+.h-190 {
+  --h: 190px;
+}
+.h-196 {
+  --h: 196px;
+}
+.h-206 {
+  --h: 206px;
+}
+.h-220 {
+  --h: 220px;
+}
+.h-230 {
+  --h: 230px;
+}
+.h-240 {
+  --h: 240px;
+}
+.h-260 {
+  --h: 260px;
+}
+.h-280 {
+  --h: 280px;
+}
+.h-300 {
+  --h: 300px;
+}
+.h-320 {
+  --h: 320px;
+}
+.h-420 {
+  --h: 420px;
+}
+.h-520 {
+  --h: 520px;
+}
+.h-600 {
+  --h: 600px;
+}
+/* swatches and legend marks */
+.bg-accent {
+  background: var(--accent);
+}
+.bg-accent2 {
+  background: var(--accent2);
+}
+.bg-ink {
+  background: var(--ink);
+}
+.bg-muted {
+  background: var(--muted);
+}
+.bg-trace2 {
+  background: var(--trace2);
+}
+.bg-trace3 {
+  background: var(--trace3);
+}
+/* component cards: accent colour of the card (--rc) */
+.rc-accent {
+  --rc: var(--accent);
+}
+.rc-ink {
+  --rc: var(--ink);
+}
+.rc-trace2 {
+  --rc: var(--trace2);
+}
+.rc-trace3 {
+  --rc: var(--trace3);
+}
+/* coloured terms in demo readouts */
+.fg-accent {
+  color: var(--accent);
+}
+.fg-ink {
+  color: var(--ink);
+}
+.fg-trace2 {
+  color: var(--trace2);
+}
+.fg-trace3 {
+  color: var(--trace3);
+}

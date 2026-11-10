@@ -16,7 +16,7 @@
         <button type="button" data-q="disc" class="tgl">時間を離散にする</button
         ><button type="button" data-q="per" class="tgl">時間を周期的にする</button>
       </div>
-      <div class="plot" style="--h: 520px"><canvas data-c="a" /></div>
+      <div class="plot h-520"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
     </figure>
     <ul>

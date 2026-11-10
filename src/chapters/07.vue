@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -32,14 +36,20 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">段を 0 → 3 と進めて、X[1] と X[7] に 4 が現れるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="db-s">段</label
-          ><input id="db-s" type="range" data-p="s" min="0" max="3" step="1" value="0" /><output
-            data-o="s"
-          />
+          <label :for="uid + '-db-s'">段</label
+          ><input
+            :id="uid + '-db-s'"
+            type="range"
+            data-p="s"
+            min="0"
+            max="3"
+            step="1"
+            value="0"
+          /><output data-o="s" />
         </div>
         <div class="sel">
-          <label for="db-sig">入力</label
-          ><select id="db-sig" data-p="sig">
+          <label :for="uid + '-db-sig'">入力</label
+          ><select :id="uid + '-db-sig'" data-p="sig">
             <option value="imp">インパルス</option>
             <option value="dc">定数 1</option>
             <option value="c1" selected>cos(2πn/8)</option>
@@ -67,13 +77,19 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">N を大きくして、DFT と FFT の棒の差が開いていくのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="do-p">N = 2^p</label
-          ><input id="do-p" type="range" data-p="p" min="3" max="24" step="1" value="10" /><output
-            data-o="p"
-          />
+          <label :for="uid + '-do-p'">N = 2^p</label
+          ><input
+            :id="uid + '-do-p'"
+            type="range"
+            data-p="p"
+            min="3"
+            max="24"
+            step="1"
+            value="10"
+          /><output data-o="p" />
         </div>
       </div>
-      <div class="plot" style="--h: 124px"><canvas data-c="a" /></div>
+      <div class="plot h-124"><canvas data-c="a" /></div>
       <div class="read" data-o="read" />
       <details class="howto">
         <summary>図の読み方</summary>

@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import MathBlock from "../components/MathBlock.vue";
 import MathInline from "../components/MathInline.vue";
+
+// Prefix for the form-control ids, so labels stay linked even if a chapter renders twice.
+const uid = useId();
 </script>
 
 <template>
@@ -40,26 +44,37 @@ import MathInline from "../components/MathInline.vue";
       <p class="try-line">f を少しずつ上げて、緑のピンが帯の端で引き返すのを見る</p>
       <div class="dc">
         <div class="row">
-          <label for="da-f">信号 f</label
-          ><input id="da-f" type="range" data-p="f" min="0" max="25" step="1" value="7" /><output
-            data-o="f"
-          />
+          <label :for="uid + '-da-f'">信号 f</label
+          ><input
+            :id="uid + '-da-f'"
+            type="range"
+            data-p="f"
+            min="0"
+            max="25"
+            step="1"
+            value="7"
+          /><output data-o="f" />
         </div>
         <div class="row">
-          <label for="da-fs">f<sub>s</sub></label
-          ><input id="da-fs" type="range" data-p="fs" min="4" max="30" step="1" value="10" /><output
-            data-o="fs"
-          />
+          <label :for="uid + '-da-fs'">f<sub>s</sub></label
+          ><input
+            :id="uid + '-da-fs'"
+            type="range"
+            data-p="fs"
+            min="4"
+            max="30"
+            step="1"
+            value="10"
+          /><output data-o="fs" />
         </div>
       </div>
       <div class="plots-col">
         <div class="legend">
-          <span><i style="background: var(--muted)" />連続信号</span
-          ><span><i style="background: var(--trace2)" />サンプル</span
-          ><span><i style="background: var(--trace3)" />サンプルから見える波</span>
+          <span><i class="bg-muted" />連続信号</span><span><i class="bg-trace2" />サンプル</span
+          ><span><i class="bg-trace3" />サンプルから見える波</span>
         </div>
-        <div class="plot" style="--h: 220px"><canvas data-c="a" /></div>
-        <div class="plot" style="--h: 260px"><canvas data-c="b" /></div>
+        <div class="plot h-220"><canvas data-c="a" /></div>
+        <div class="plot h-260"><canvas data-c="b" /></div>
       </div>
       <div class="read" data-o="read" />
       <details class="howto">
