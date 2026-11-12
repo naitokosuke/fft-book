@@ -7,7 +7,7 @@
     "build": "vp build",
     "preview": "vp preview",
     "lint": "vize lint \"pages/**/*.vue\" \"src/**/*.vue\" \"src/**/*.ts\"",
-    "typecheck": "vize check",
+    "typecheck": "tsrs --runExternalCode --noEmit -p tsconfig.json",
     "postinstall": "void prepare"
   },
   "dependencies": {
