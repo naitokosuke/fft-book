@@ -10,5 +10,6 @@
     "types": ["void/env"],
     "jsx": "preserve"
   },
+  "contentMappers": [{ "package": "vize", "extensions": [".vue"] }],
   "include": ["src", "pages", "routes", "middleware", "crons", "queues", "db"]
 }

@@ -7,7 +7,7 @@
     "build": "vp build",
     "preview": "vp preview",
     "lint": "vize lint \"pages/**/*.vue\" \"src/**/*.vue\" \"src/**/*.ts\"",
-    "typecheck": "vize check",
+    "typecheck": "tsrs --runExternalCode --noEmit -p tsconfig.json",
     "postinstall": "void prepare"
   },
   "dependencies": {
@@ -17,12 +17,12 @@
   },
   "devDependencies": {
     "@types/katex": "^0.16.8",
-    "@vizejs/vite-plugin": "^0.732.0",
+    "@vizejs/vite-plugin": "^0.749.0",
     "@void/vue": "1.7.0",
-    "tsrs": "0.23.0-ts7.1.0-beta",
+    "tsrs": "0.25.0-ts7.1.0-beta",
     "vite": "npm:@voidzero-dev/vite-plus-core@^1.5.1",
     "vite-plus": "^1.5.1",
-    "vize": "^0.732.0",
+    "vize": "^0.749.0",
     "void": "1.7.0"
   },
   "packageManager": "pnpm@12.18.0"

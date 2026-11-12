@@ -4,17 +4,17 @@ allowBuilds:
   sharp: true
   workerd: true
 minimumReleaseAgeExclude:
-  - "@vizejs/native-darwin-arm64@0.732.0"
-  - "@vizejs/native-darwin-x64@0.732.0"
-  - "@vizejs/native-linux-arm64-gnu@0.732.0"
-  - "@vizejs/native-linux-arm64-musl@0.732.0"
-  - "@vizejs/native-linux-x64-gnu@0.732.0"
-  - "@vizejs/native-linux-x64-musl@0.732.0"
-  - "@vizejs/native-win32-arm64-msvc@0.732.0"
-  - "@vizejs/native-win32-x64-msvc@0.732.0"
-  - "@vizejs/native@0.732.0"
-  - "@vizejs/unplugin@0.732.0"
-  - "@vizejs/vite-plugin@0.732.0"
+  - "@vizejs/native-darwin-arm64@0.749.0"
+  - "@vizejs/native-darwin-x64@0.749.0"
+  - "@vizejs/native-linux-arm64-gnu@0.749.0"
+  - "@vizejs/native-linux-arm64-musl@0.749.0"
+  - "@vizejs/native-linux-x64-gnu@0.749.0"
+  - "@vizejs/native-linux-x64-musl@0.749.0"
+  - "@vizejs/native-win32-arm64-msvc@0.749.0"
+  - "@vizejs/native-win32-x64-msvc@0.749.0"
+  - "@vizejs/native@0.749.0"
+  - "@vizejs/unplugin@0.749.0"
+  - "@vizejs/vite-plugin@0.749.0"
   - "@voidzero-dev/vite-plus-core@1.5.1"
   - "@voidzero-dev/vite-plus-darwin-arm64@1.5.1"
   - "@voidzero-dev/vite-plus-darwin-x64@1.5.1"
@@ -25,7 +25,16 @@ minimumReleaseAgeExclude:
   - "@voidzero-dev/vite-plus-win32-arm64-msvc@1.5.1"
   - "@voidzero-dev/vite-plus-win32-x64-msvc@1.5.1"
   - vite-plus@1.5.1
-  - vize@0.732.0
+  - vize@0.749.0
+  - "@tsrs/darwin-arm64@0.25.0-ts7.1.0-beta"
+  - "@tsrs/darwin-x64@0.25.0-ts7.1.0-beta"
+  - "@tsrs/linux-arm64-gnu@0.25.0-ts7.1.0-beta"
+  - "@tsrs/linux-arm64-musl@0.25.0-ts7.1.0-beta"
+  - "@tsrs/linux-x64-gnu@0.25.0-ts7.1.0-beta"
+  - "@tsrs/linux-x64-musl@0.25.0-ts7.1.0-beta"
+  - "@tsrs/win32-arm64@0.25.0-ts7.1.0-beta"
+  - "@tsrs/win32-x64@0.25.0-ts7.1.0-beta"
+  - tsrs@0.25.0-ts7.1.0-beta
 overrides:
   vite@*: npm:@voidzero-dev/vite-plus-core@^1.5.1
 peerDependencyRules:

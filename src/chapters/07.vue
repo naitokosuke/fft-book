@@ -36,7 +36,7 @@ const uid = useId();
       <p class="try-line">段を 0 → 3 と進めて、X[1] と X[7] に 4 が現れるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-db-s'">段</label
+          <label :id="uid + '-db-s-label'" :for="uid + '-db-s'">段</label
           ><input
             :id="uid + '-db-s'"
             type="range"
@@ -45,7 +45,7 @@ const uid = useId();
             max="3"
             step="1"
             value="0"
-          /><output data-o="s" />
+          /><output :for="uid + '-db-s'" :aria-labelledby="uid + '-db-s-label'" data-o="s" />
         </div>
         <div class="sel">
           <label :for="uid + '-db-sig'">入力</label
@@ -77,7 +77,7 @@ const uid = useId();
       <p class="try-line">N を大きくして、DFT と FFT の棒の差が開いていくのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-do-p'">N = 2^p</label
+          <label :id="uid + '-do-p-label'" :for="uid + '-do-p'">N = 2^p</label
           ><input
             :id="uid + '-do-p'"
             type="range"
@@ -86,7 +86,7 @@ const uid = useId();
             max="24"
             step="1"
             value="10"
-          /><output data-o="p" />
+          /><output :for="uid + '-do-p'" :aria-labelledby="uid + '-do-p-label'" data-o="p" />
         </div>
       </div>
       <div class="plot h-124"><canvas data-c="a" /></div>

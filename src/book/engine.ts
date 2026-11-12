@@ -53,7 +53,7 @@ export function mountBook(): void {
     cancelAnimationFrame(tweenIds[key] ?? 0);
     if (REDUCED || ms <= 0) {
       step(1);
-      done && done();
+      done?.();
       return;
     }
     const t0 = performance.now();
@@ -61,7 +61,7 @@ export function mountBook(): void {
       const u = Math.min(1, (now - t0) / ms);
       step(ease(u));
       if (u < 1) tweenIds[key] = requestAnimationFrame(f);
-      else done && done();
+      else done?.();
     };
     tweenIds[key] = requestAnimationFrame(f);
   }
@@ -747,7 +747,8 @@ export function mountBook(): void {
         for (let j = 0; j <= SPC; j++) {
           const tau = (2 * (c0 + j / SPC)) / CH,
             v = Math.cos(th - 2 * Math.PI * f * tau);
-          j ? ctx.lineTo(X(v), Yt(tau)) : ctx.moveTo(X(v), Yt(tau));
+          if (j) ctx.lineTo(X(v), Yt(tau));
+          else ctx.moveTo(X(v), Yt(tau));
         }
         ctx.stroke();
       }
@@ -997,7 +998,7 @@ export function mountBook(): void {
   }
   const syVal = (c: SyComp, t: number) =>
     c.w ? c.w * c.a * Math.cos(2 * Math.PI * c.f * t + (c.ph * Math.PI) / 180) : 0;
-  const syLbl = (c: SyComp, i: number) =>
+  const syLbl = (c: SyComp) =>
     `${c.a.toFixed(2)}·cos(2π·${+c.f.toFixed(2)}t ${c.ph < 0 ? "−" : "+"} ${Math.abs(Math.round(c.ph))}°)`;
   demo(
     "d-synth",
@@ -1018,7 +1019,7 @@ export function mountBook(): void {
         on.length
           ? "x(t) = " +
               on
-                .map(([c, i]) => `<span class="fg-${SYC[i]!.slice(2)}">${syLbl(c, i)}</span>`)
+                .map(([c, i]) => `<span class="fg-${SYC[i]!.slice(2)}">${syLbl(c)}</span>`)
                 .join(" + ")
           : "x(t) = 0（成分がすべてオフ）",
       );
@@ -1079,7 +1080,8 @@ export function mountBook(): void {
         for (let k = 0; k <= N; k++) {
           const t = (TW * k) / N,
             y = cy - c.a * Math.cos(2 * Math.PI * c.f * t + (c.ph * Math.PI) / 180) * sc;
-          k ? ctx.lineTo(X(t), y) : ctx.moveTo(X(t), y);
+          if (k) ctx.lineTo(X(t), y);
+          else ctx.moveTo(X(t), y);
         }
         ctx.stroke();
         ctx.globalAlpha = 1;
@@ -1091,7 +1093,7 @@ export function mountBook(): void {
         ctx.fillText(c.on ? `成分 ${i + 1}` : `成分 ${i + 1}（オフ）`.slice(0, 4), 24, cy);
         ctx.globalAlpha = 1;
         if (SY.hi === i && c.on && SY.tx == null)
-          tag(ctx, syLbl(c, i), W - mr - 6, y0 + 12, css(SYC[i]), "right");
+          tag(ctx, syLbl(c), W - mr - 6, y0 + 12, css(SYC[i]), "right");
         ctx.fillStyle = css("--muted");
         ctx.font = "16px " + css("--f-mono");
         ctx.textAlign = "center";
@@ -1121,7 +1123,8 @@ export function mountBook(): void {
         ctx.beginPath();
         for (let k = 0; k <= N; k++) {
           const y = cy - sum[k] * sc;
-          k ? ctx.lineTo(X((TW * k) / N), y) : ctx.moveTo(X((TW * k) / N), y);
+          if (k) ctx.lineTo(X((TW * k) / N), y);
+          else ctx.moveTo(X((TW * k) / N), y);
         }
         ctx.stroke();
         // cursor: values at one instant, showing the addition
@@ -1417,7 +1420,8 @@ export function mountBook(): void {
         const a = (2 * Math.PI * i) / 120,
           X0 = A * (1 - 0.5 * m) * Math.cos(a) + A * 0.5 * m * Math.cos(a),
           Y0 = A * (1 - 0.5 * m) * Math.sin(a) - A * 0.5 * m * Math.sin(a);
-        i ? ctx.lineTo(Pl.X(X0), Pl.Y(Y0)) : ctx.moveTo(Pl.X(X0), Pl.Y(Y0));
+        if (i) ctx.lineTo(Pl.X(X0), Pl.Y(Y0));
+        else ctx.moveTo(Pl.X(X0), Pl.Y(Y0));
       }
       ctx.stroke();
       ctx.globalAlpha = 1;
@@ -1826,7 +1830,7 @@ export function mountBook(): void {
           : `f<sub>p</sub> = ${fp} Hz は信号の ${f} Hz と違うので、どちらの平均も 0 → 矢印は消える`,
       );
     },
-    (r) => {},
+    () => {},
   );
 
   // ===== demos added for the restructured chapters =====
@@ -2127,7 +2131,6 @@ export function mountBook(): void {
         lime = css("--accent"),
         mut = css("--muted"),
         ink = css("--ink"),
-        red = css("--trace2"),
         mint = css("--trace3");
       const cells = [
         { d: false, p: false, name: "フーリエ変換" },
@@ -2228,7 +2231,8 @@ export function mountBook(): void {
                 v = val(u),
                 X = x + (pw * (u + 1)) / 2,
                 Y = py - v * (ph - 6);
-              i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+              if (i) ctx.lineTo(X, Y);
+              else ctx.moveTo(X, Y);
             }
             ctx.stroke();
           }
@@ -2370,7 +2374,6 @@ export function mountBook(): void {
       fs = P(r, "fs"),
       lime = css("--accent"),
       red = css("--trace2"),
-      mut = css("--muted"),
       mint = css("--trace3");
     O(r, "B", Bw + " Hz");
     O(r, "fs", fs + " Hz");
@@ -2945,8 +2948,7 @@ export function mountBook(): void {
       ]);
       const lime = css("--accent"),
         mint = css("--trace3"),
-        red = css("--trace2"),
-        mut = css("--muted");
+        red = css("--trace2");
       const A = plane(C(r, "a"), 1.25 + dw),
         ctx = A.ctx;
       let cx = 0,
@@ -2967,7 +2969,8 @@ export function mountBook(): void {
         ctx.globalAlpha = alpha;
         ctx.beginPath();
         for (let i = 0; i < M && ts[i] <= upto; i++)
-          i ? ctx.lineTo(A.X(zx[i]), A.Y(zy[i])) : ctx.moveTo(A.X(zx[i]), A.Y(zy[i]));
+          if (i) ctx.lineTo(A.X(zx[i]), A.Y(zy[i]));
+          else ctx.moveTo(A.X(zx[i]), A.Y(zy[i]));
         ctx.stroke();
         ctx.globalAlpha = 1;
       };
@@ -3720,7 +3723,8 @@ export function mountBook(): void {
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let n = 0; n < N; n++)
-        n ? ctx.lineTo(A.X(zx[n]), A.Y(zy[n])) : ctx.moveTo(A.X(zx[n]), A.Y(zy[n]));
+        if (n) ctx.lineTo(A.X(zx[n]), A.Y(zy[n]));
+        else ctx.moveTo(A.X(zx[n]), A.Y(zy[n]));
       ctx.stroke();
       ctx.globalAlpha = 0.9;
       ctx.fillStyle = lime;
@@ -3814,7 +3818,7 @@ export function mountBook(): void {
     fft(re, im, false);
     const amp = (k: number) => (Math.hypot(re[k], im[k]) * (k === 0 || k === N / 2 ? 1 : 2)) / N;
     const order = [...Array(N / 2 + 1).keys()].sort((a, b) => amp(b) - amp(a)),
-      rank = new Array(N / 2 + 1);
+      rank = Array.from<number>({ length: N / 2 + 1 });
     order.forEach((k, i) => (rank[k] = i));
     const wt = (k: number) => Math.max(0, Math.min(1, Kd - rank[k]));
     const fr = new Float64Array(N),
@@ -4099,7 +4103,8 @@ export function mountBook(): void {
         for (let k = 0; k <= 240; k++) {
           const x = k / 240,
             y = cy - a * Math.sin(2 * Math.PI * f * (x * 2 + t)) * laneH * 0.36;
-          k ? ctx.lineTo(lx + x * lw, y) : ctx.moveTo(lx + x * lw, y);
+          if (k) ctx.lineTo(lx + x * lw, y);
+          else ctx.moveTo(lx + x * lw, y);
         }
         ctx.stroke();
       });
@@ -4114,7 +4119,8 @@ export function mountBook(): void {
         let v = 0;
         for (const [f, a] of comps) v += a * Math.sin(2 * Math.PI * f * (x * 2 + t));
         const y = sy - v * 18;
-        k ? ctx.lineTo(lx + x * lw, y) : ctx.moveTo(lx + x * lw, y);
+        if (k) ctx.lineTo(lx + x * lw, y);
+        else ctx.moveTo(lx + x * lw, y);
       }
       ctx.stroke();
       ctx.fillStyle = css("--ink");
@@ -4159,7 +4165,7 @@ export function mountBook(): void {
       ctx.fillStyle = css("--muted");
       ctx.fillText("Hz", W - 10, base + 18);
       if (vis && !REDUCED)
-        raf = requestAnimationFrame((n) => {
+        raf = requestAnimationFrame(() => {
           raf = requestAnimationFrame(draw);
         });
     };

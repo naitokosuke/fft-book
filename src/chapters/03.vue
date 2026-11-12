@@ -75,7 +75,7 @@ const uid = useId();
       </p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dw-fsig'">信号の f</label
+          <label :id="uid + '-dw-fsig-label'" :for="uid + '-dw-fsig'">信号の f</label
           ><input
             :id="uid + '-dw-fsig'"
             type="range"
@@ -84,10 +84,14 @@ const uid = useId();
             max="5"
             step="0.5"
             value="3"
-          /><output data-o="fsig" />
+          /><output
+            :for="uid + '-dw-fsig'"
+            :aria-labelledby="uid + '-dw-fsig-label'"
+            data-o="fsig"
+          />
         </div>
         <div class="row">
-          <label :for="uid + '-dw-fw'">巻き付け f</label
+          <label :id="uid + '-dw-fw-label'" :for="uid + '-dw-fw'">巻き付け f</label
           ><input
             :id="uid + '-dw-fw'"
             type="range"
@@ -96,10 +100,10 @@ const uid = useId();
             max="6"
             step="any"
             value="1.2"
-          /><output data-o="fw" />
+          /><output :for="uid + '-dw-fw'" :aria-labelledby="uid + '-dw-fw-label'" data-o="fw" />
         </div>
         <div class="row">
-          <label :for="uid + '-dw-t'">時刻 t</label
+          <label :id="uid + '-dw-t-label'" :for="uid + '-dw-t'">時刻 t</label
           ><input
             :id="uid + '-dw-t'"
             type="range"
@@ -108,7 +112,7 @@ const uid = useId();
             max="4"
             step="any"
             value="0.6"
-          /><output data-o="t" />
+          /><output :for="uid + '-dw-t'" :aria-labelledby="uid + '-dw-t-label'" data-o="t" />
         </div>
         <div class="btns">
           <button type="button" data-play="t">▶ 巻き付けを再生</button

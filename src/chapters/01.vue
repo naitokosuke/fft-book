@@ -36,7 +36,7 @@ const uid = useId();
             1</label
           >
           <div class="row">
-            <label :for="uid + '-sy0f'" title="周波数 f">f</label
+            <label :id="uid + '-sy0f-label'" :for="uid + '-sy0f'" title="周波数 f">f</label
             ><input
               :id="uid + '-sy0f'"
               type="range"
@@ -45,10 +45,10 @@ const uid = useId();
               max="10"
               step="any"
               value="1"
-            /><output data-o="c0f" />
+            /><output :for="uid + '-sy0f'" :aria-labelledby="uid + '-sy0f-label'" data-o="c0f" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy0a'" title="振幅 A">A</label
+            <label :id="uid + '-sy0a-label'" :for="uid + '-sy0a'" title="振幅 A">A</label
             ><input
               :id="uid + '-sy0a'"
               type="range"
@@ -57,10 +57,10 @@ const uid = useId();
               max="2"
               step="any"
               value="1"
-            /><output data-o="c0a" />
+            /><output :for="uid + '-sy0a'" :aria-labelledby="uid + '-sy0a-label'" data-o="c0a" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy0p'" title="位相 φ">φ</label
+            <label :id="uid + '-sy0p-label'" :for="uid + '-sy0p'" title="位相 φ">φ</label
             ><input
               :id="uid + '-sy0p'"
               type="range"
@@ -69,7 +69,7 @@ const uid = useId();
               max="180"
               step="any"
               value="0"
-            /><output data-o="c0p" />
+            /><output :for="uid + '-sy0p'" :aria-labelledby="uid + '-sy0p-label'" data-o="c0p" />
           </div>
         </div>
         <div class="cc rc-trace3" data-card="1">
@@ -78,7 +78,7 @@ const uid = useId();
             2</label
           >
           <div class="row">
-            <label :for="uid + '-sy1f'" title="周波数 f">f</label
+            <label :id="uid + '-sy1f-label'" :for="uid + '-sy1f'" title="周波数 f">f</label
             ><input
               :id="uid + '-sy1f'"
               type="range"
@@ -87,10 +87,10 @@ const uid = useId();
               max="10"
               step="any"
               value="3"
-            /><output data-o="c1f" />
+            /><output :for="uid + '-sy1f'" :aria-labelledby="uid + '-sy1f-label'" data-o="c1f" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy1a'" title="振幅 A">A</label
+            <label :id="uid + '-sy1a-label'" :for="uid + '-sy1a'" title="振幅 A">A</label
             ><input
               :id="uid + '-sy1a'"
               type="range"
@@ -99,10 +99,10 @@ const uid = useId();
               max="2"
               step="any"
               value="0.5"
-            /><output data-o="c1a" />
+            /><output :for="uid + '-sy1a'" :aria-labelledby="uid + '-sy1a-label'" data-o="c1a" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy1p'" title="位相 φ">φ</label
+            <label :id="uid + '-sy1p-label'" :for="uid + '-sy1p'" title="位相 φ">φ</label
             ><input
               :id="uid + '-sy1p'"
               type="range"
@@ -111,7 +111,7 @@ const uid = useId();
               max="180"
               step="any"
               value="0"
-            /><output data-o="c1p" />
+            /><output :for="uid + '-sy1p'" :aria-labelledby="uid + '-sy1p-label'" data-o="c1p" />
           </div>
         </div>
         <div class="cc rc-trace2" data-card="2">
@@ -119,7 +119,7 @@ const uid = useId();
             ><input type="checkbox" data-p="c2on" /><span class="sw bg-trace2" />成分 3</label
           >
           <div class="row">
-            <label :for="uid + '-sy2f'" title="周波数 f">f</label
+            <label :id="uid + '-sy2f-label'" :for="uid + '-sy2f'" title="周波数 f">f</label
             ><input
               :id="uid + '-sy2f'"
               type="range"
@@ -128,10 +128,10 @@ const uid = useId();
               max="10"
               step="any"
               value="5"
-            /><output data-o="c2f" />
+            /><output :for="uid + '-sy2f'" :aria-labelledby="uid + '-sy2f-label'" data-o="c2f" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy2a'" title="振幅 A">A</label
+            <label :id="uid + '-sy2a-label'" :for="uid + '-sy2a'" title="振幅 A">A</label
             ><input
               :id="uid + '-sy2a'"
               type="range"
@@ -140,10 +140,10 @@ const uid = useId();
               max="2"
               step="any"
               value="0.3"
-            /><output data-o="c2a" />
+            /><output :for="uid + '-sy2a'" :aria-labelledby="uid + '-sy2a-label'" data-o="c2a" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy2p'" title="位相 φ">φ</label
+            <label :id="uid + '-sy2p-label'" :for="uid + '-sy2p'" title="位相 φ">φ</label
             ><input
               :id="uid + '-sy2p'"
               type="range"
@@ -152,7 +152,7 @@ const uid = useId();
               max="180"
               step="any"
               value="0"
-            /><output data-o="c2p" />
+            /><output :for="uid + '-sy2p'" :aria-labelledby="uid + '-sy2p-label'" data-o="c2p" />
           </div>
         </div>
         <div class="cc rc-ink" data-card="3">
@@ -160,7 +160,7 @@ const uid = useId();
             ><input type="checkbox" data-p="c3on" /><span class="sw bg-ink" />成分 4</label
           >
           <div class="row">
-            <label :for="uid + '-sy3f'" title="周波数 f">f</label
+            <label :id="uid + '-sy3f-label'" :for="uid + '-sy3f'" title="周波数 f">f</label
             ><input
               :id="uid + '-sy3f'"
               type="range"
@@ -169,10 +169,10 @@ const uid = useId();
               max="10"
               step="any"
               value="7"
-            /><output data-o="c3f" />
+            /><output :for="uid + '-sy3f'" :aria-labelledby="uid + '-sy3f-label'" data-o="c3f" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy3a'" title="振幅 A">A</label
+            <label :id="uid + '-sy3a-label'" :for="uid + '-sy3a'" title="振幅 A">A</label
             ><input
               :id="uid + '-sy3a'"
               type="range"
@@ -181,10 +181,10 @@ const uid = useId();
               max="2"
               step="any"
               value="0.2"
-            /><output data-o="c3a" />
+            /><output :for="uid + '-sy3a'" :aria-labelledby="uid + '-sy3a-label'" data-o="c3a" />
           </div>
           <div class="row">
-            <label :for="uid + '-sy3p'" title="位相 φ">φ</label
+            <label :id="uid + '-sy3p-label'" :for="uid + '-sy3p'" title="位相 φ">φ</label
             ><input
               :id="uid + '-sy3p'"
               type="range"
@@ -193,7 +193,7 @@ const uid = useId();
               max="180"
               step="any"
               value="0"
-            /><output data-o="c3p" />
+            /><output :for="uid + '-sy3p'" :aria-labelledby="uid + '-sy3p-label'" data-o="c3p" />
           </div>
         </div>
       </div>
@@ -249,7 +249,7 @@ const uid = useId();
       <p class="try-line">成分を増やしても、段差の横の出っ張りが消えないのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dg-K'">使う成分の数</label
+          <label :id="uid + '-dg-K-label'" :for="uid + '-dg-K'">使う成分の数</label
           ><input
             :id="uid + '-dg-K'"
             type="range"
@@ -258,7 +258,7 @@ const uid = useId();
             max="60"
             step="1"
             value="3"
-          /><output data-o="K" />
+          /><output :for="uid + '-dg-K'" :aria-labelledby="uid + '-dg-K-label'" data-o="K" />
         </div>
       </div>
       <div class="plots2">
@@ -298,7 +298,7 @@ const uid = useId();
       </p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-mt-fp'">ものさし</label
+          <label :id="uid + '-mt-fp-label'" :for="uid + '-mt-fp'">ものさし</label
           ><input
             :id="uid + '-mt-fp'"
             type="range"
@@ -307,7 +307,7 @@ const uid = useId();
             max="6"
             step="any"
             value="0.4"
-          /><output data-o="fp" />
+          /><output :for="uid + '-mt-fp'" :aria-labelledby="uid + '-mt-fp-label'" data-o="fp" />
         </div>
         <div class="btns"><button type="button" data-play>▶ ものさしを動かす</button></div>
       </div>
@@ -404,7 +404,7 @@ const uid = useId();
           </select>
         </div>
         <div class="row">
-          <label :for="uid + '-or-m'">m</label
+          <label :id="uid + '-or-m-label'" :for="uid + '-or-m'">m</label
           ><input
             :id="uid + '-or-m'"
             type="range"
@@ -413,10 +413,10 @@ const uid = useId();
             max="6"
             step="1"
             value="2"
-          /><output data-o="m" />
+          /><output :for="uid + '-or-m'" :aria-labelledby="uid + '-or-m-label'" data-o="m" />
         </div>
         <div class="row">
-          <label :for="uid + '-or-k'">k</label
+          <label :id="uid + '-or-k-label'" :for="uid + '-or-k'">k</label
           ><input
             :id="uid + '-or-k'"
             type="range"
@@ -425,7 +425,7 @@ const uid = useId();
             max="6"
             step="1"
             value="3"
-          /><output data-o="k" />
+          /><output :for="uid + '-or-k'" :aria-labelledby="uid + '-or-k-label'" data-o="k" />
         </div>
       </div>
       <div class="read" data-o="read" />
@@ -465,7 +465,7 @@ const uid = useId();
       </p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-pb-f'">信号の f</label
+          <label :id="uid + '-pb-f-label'" :for="uid + '-pb-f'">信号の f</label
           ><input
             :id="uid + '-pb-f'"
             type="range"
@@ -474,10 +474,10 @@ const uid = useId();
             max="5"
             step="1"
             value="3"
-          /><output data-o="f" />
+          /><output :for="uid + '-pb-f'" :aria-labelledby="uid + '-pb-f-label'" data-o="f" />
         </div>
         <div class="row">
-          <label :for="uid + '-pb-A'">振幅 A</label
+          <label :id="uid + '-pb-A-label'" :for="uid + '-pb-A'">振幅 A</label
           ><input
             :id="uid + '-pb-A'"
             type="range"
@@ -486,10 +486,10 @@ const uid = useId();
             max="1.5"
             step="0.01"
             value="1"
-          /><output data-o="A" />
+          /><output :for="uid + '-pb-A'" :aria-labelledby="uid + '-pb-A-label'" data-o="A" />
         </div>
         <div class="row">
-          <label :for="uid + '-pb-ph'">位相 φ</label
+          <label :id="uid + '-pb-ph-label'" :for="uid + '-pb-ph'">位相 φ</label
           ><input
             :id="uid + '-pb-ph'"
             type="range"
@@ -498,10 +498,10 @@ const uid = useId();
             max="180"
             step="5"
             value="30"
-          /><output data-o="ph" />
+          /><output :for="uid + '-pb-ph'" :aria-labelledby="uid + '-pb-ph-label'" data-o="ph" />
         </div>
         <div class="row">
-          <label :for="uid + '-pb-fp'">測る f<sub>p</sub></label
+          <label :id="uid + '-pb-fp-label'" :for="uid + '-pb-fp'">測る f<sub>p</sub></label
           ><input
             :id="uid + '-pb-fp'"
             type="range"
@@ -510,7 +510,7 @@ const uid = useId();
             max="6"
             step="0.5"
             value="3"
-          /><output data-o="fp" />
+          /><output :for="uid + '-pb-fp'" :aria-labelledby="uid + '-pb-fp-label'" data-o="fp" />
         </div>
       </div>
       <div class="left-stack">
