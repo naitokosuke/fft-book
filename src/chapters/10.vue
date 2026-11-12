@@ -26,7 +26,7 @@ const uid = useId();
       </p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-rp-B'">信号の帯域 B</label
+          <label :id="uid + '-rp-B-label'" :for="uid + '-rp-B'">信号の帯域 B</label
           ><input
             :id="uid + '-rp-B'"
             type="range"
@@ -35,10 +35,10 @@ const uid = useId();
             max="10"
             step="0.5"
             value="4"
-          /><output data-o="B" />
+          /><output :for="uid + '-rp-B'" :aria-labelledby="uid + '-rp-B-label'" data-o="B" />
         </div>
         <div class="row">
-          <label :for="uid + '-rp-fs'">fs</label
+          <label :id="uid + '-rp-fs-label'" :for="uid + '-rp-fs'">fs</label
           ><input
             :id="uid + '-rp-fs'"
             type="range"
@@ -47,7 +47,7 @@ const uid = useId();
             max="30"
             step="0.5"
             value="12"
-          /><output data-o="fs" />
+          /><output :for="uid + '-rp-fs'" :aria-labelledby="uid + '-rp-fs-label'" data-o="fs" />
         </div>
       </div>
       <div class="plot h-280"><canvas data-c="a" /></div>

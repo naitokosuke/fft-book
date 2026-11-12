@@ -41,7 +41,7 @@ const uid = useId();
           </select>
         </div>
         <div class="row">
-          <label :for="uid + '-d-dtft2-L'">パルスの長さ</label
+          <label :id="uid + '-d-dtft2-L-label'" :for="uid + '-d-dtft2-L'">パルスの長さ</label
           ><input
             :id="uid + '-d-dtft2-L'"
             type="range"
@@ -50,10 +50,14 @@ const uid = useId();
             max="16"
             step="1"
             value="4"
-          /><output data-o="L" />
+          /><output
+            :for="uid + '-d-dtft2-L'"
+            :aria-labelledby="uid + '-d-dtft2-L-label'"
+            data-o="L"
+          />
         </div>
         <div class="row">
-          <label :for="uid + '-d-dtft2-N'">DFT の点数 N</label
+          <label :id="uid + '-d-dtft2-N-label'" :for="uid + '-d-dtft2-N'">DFT の点数 N</label
           ><input
             :id="uid + '-d-dtft2-N'"
             type="range"
@@ -62,7 +66,11 @@ const uid = useId();
             max="48"
             step="1"
             value="16"
-          /><output data-o="N" />
+          /><output
+            :for="uid + '-d-dtft2-N'"
+            :aria-labelledby="uid + '-d-dtft2-N-label'"
+            data-o="N"
+          />
         </div>
       </div>
       <div class="plots2">
@@ -86,7 +94,7 @@ const uid = useId();
       <p class="try-line">左の棒を上下にドラッグして信号を描き、右の |X[k]| が変わるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dh-k'">ビン k</label
+          <label :id="uid + '-dh-k-label'" :for="uid + '-dh-k'">ビン k</label
           ><input
             :id="uid + '-dh-k'"
             type="range"
@@ -95,7 +103,7 @@ const uid = useId();
             max="7"
             step="1"
             value="1"
-          /><output data-o="k" />
+          /><output :for="uid + '-dh-k'" :aria-labelledby="uid + '-dh-k-label'" data-o="k" />
         </div>
         <div class="btns">
           <span class="t">信号：</span><button type="button" data-sig="imp">インパルス</button
@@ -147,7 +155,7 @@ const uid = useId();
           </select>
         </div>
         <div class="row">
-          <label :for="uid + '-dk-k'">ビン k</label
+          <label :id="uid + '-dk-k-label'" :for="uid + '-dk-k'">ビン k</label
           ><input
             :id="uid + '-dk-k'"
             type="range"
@@ -156,7 +164,7 @@ const uid = useId();
             max="32"
             step="any"
             value="3"
-          /><output data-o="k" />
+          /><output :for="uid + '-dk-k'" :aria-labelledby="uid + '-dk-k-label'" data-o="k" />
         </div>
         <div class="btns"><button type="button" data-play>▶ k を 0 から順に動かす</button></div>
       </div>

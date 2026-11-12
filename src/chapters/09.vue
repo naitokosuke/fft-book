@@ -22,7 +22,7 @@ const uid = useId();
       </p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-sh-tau'">ずらす量</label
+          <label :id="uid + '-sh-tau-label'" :for="uid + '-sh-tau'">ずらす量</label
           ><input
             :id="uid + '-sh-tau'"
             type="range"
@@ -31,7 +31,7 @@ const uid = useId();
             max="10"
             step="0.1"
             value="4"
-          /><output data-o="tau" />
+          /><output :for="uid + '-sh-tau'" :aria-labelledby="uid + '-sh-tau-label'" data-o="tau" />
         </div>
       </div>
       <div class="plot h-190"><canvas data-c="a" /></div>
@@ -55,7 +55,7 @@ const uid = useId();
       <p class="try-line">残す本数を 2 から増やしていき、ノイズが戻ってくるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dn2-s'">ノイズ σ</label
+          <label :id="uid + '-dn2-s-label'" :for="uid + '-dn2-s'">ノイズ σ</label
           ><input
             :id="uid + '-dn2-s'"
             type="range"
@@ -64,10 +64,10 @@ const uid = useId();
             max="1.2"
             step="0.01"
             value="0.6"
-          /><output data-o="s" />
+          /><output :for="uid + '-dn2-s'" :aria-labelledby="uid + '-dn2-s-label'" data-o="s" />
         </div>
         <div class="row">
-          <label :for="uid + '-dn2-K'">残す本数</label
+          <label :id="uid + '-dn2-K-label'" :for="uid + '-dn2-K'">残す本数</label
           ><input
             :id="uid + '-dn2-K'"
             type="range"
@@ -76,7 +76,7 @@ const uid = useId();
             max="65"
             step="1"
             value="2"
-          /><output data-o="K" />
+          /><output :for="uid + '-dn2-K'" :aria-labelledby="uid + '-dn2-K-label'" data-o="K" />
         </div>
       </div>
       <div class="legend">
