@@ -44,7 +44,7 @@ const uid = useId();
       <p class="try-line">f を少しずつ上げて、緑のピンが帯の端で引き返すのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-da-f'">信号 f</label
+          <label :id="uid + '-da-f-label'" :for="uid + '-da-f'">信号 f</label
           ><input
             :id="uid + '-da-f'"
             type="range"
@@ -53,10 +53,10 @@ const uid = useId();
             max="25"
             step="1"
             value="7"
-          /><output data-o="f" />
+          /><output :for="uid + '-da-f'" :aria-labelledby="uid + '-da-f-label'" data-o="f" />
         </div>
         <div class="row">
-          <label :for="uid + '-da-fs'">f<sub>s</sub></label
+          <label :id="uid + '-da-fs-label'" :for="uid + '-da-fs'">f<sub>s</sub></label
           ><input
             :id="uid + '-da-fs'"
             type="range"
@@ -65,7 +65,7 @@ const uid = useId();
             max="30"
             step="1"
             value="10"
-          /><output data-o="fs" />
+          /><output :for="uid + '-da-fs'" :aria-labelledby="uid + '-da-fs-label'" data-o="fs" />
         </div>
       </div>
       <div class="plots-col">

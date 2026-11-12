@@ -40,7 +40,7 @@ const uid = useId();
           </select>
         </div>
         <div class="row">
-          <label :for="uid + '-d-dtft-L'">パルスの長さ</label
+          <label :id="uid + '-d-dtft-L-label'" :for="uid + '-d-dtft-L'">パルスの長さ</label
           ><input
             :id="uid + '-d-dtft-L'"
             type="range"
@@ -49,7 +49,11 @@ const uid = useId();
             max="16"
             step="1"
             value="4"
-          /><output data-o="L" />
+          /><output
+            :for="uid + '-d-dtft-L'"
+            :aria-labelledby="uid + '-d-dtft-L-label'"
+            data-o="L"
+          />
         </div>
       </div>
       <div class="plots2">

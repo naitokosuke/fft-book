@@ -49,7 +49,7 @@ const uid = useId();
       <p class="try-line">「再生」して、2 本の矢印の和（赤い点）が実軸の上だけを動くのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dp-f'">周波数 f</label
+          <label :id="uid + '-dp-f-label'" :for="uid + '-dp-f'">周波数 f</label
           ><input
             :id="uid + '-dp-f'"
             type="range"
@@ -58,10 +58,10 @@ const uid = useId();
             max="3"
             step="0.05"
             value="1"
-          /><output data-o="f" />
+          /><output :for="uid + '-dp-f'" :aria-labelledby="uid + '-dp-f-label'" data-o="f" />
         </div>
         <div class="row">
-          <label :for="uid + '-dp-ph'">位相 φ</label
+          <label :id="uid + '-dp-ph-label'" :for="uid + '-dp-ph'">位相 φ</label
           ><input
             :id="uid + '-dp-ph'"
             type="range"
@@ -70,10 +70,10 @@ const uid = useId();
             max="180"
             step="1"
             value="0"
-          /><output data-o="ph" />
+          /><output :for="uid + '-dp-ph'" :aria-labelledby="uid + '-dp-ph-label'" data-o="ph" />
         </div>
         <div class="row">
-          <label :for="uid + '-dp-t'">時刻 t</label
+          <label :id="uid + '-dp-t-label'" :for="uid + '-dp-t'">時刻 t</label
           ><input
             :id="uid + '-dp-t'"
             type="range"
@@ -82,7 +82,7 @@ const uid = useId();
             max="10"
             step="any"
             value="0.1"
-          /><output data-o="t" />
+          /><output :for="uid + '-dp-t'" :aria-labelledby="uid + '-dp-t-label'" data-o="t" />
         </div>
         <div class="btns">
           <button type="button" data-play>▶ 再生</button
@@ -167,7 +167,7 @@ const uid = useId();
       <p class="try-line">「複素数」に切り替えて、−f の線が消えると赤い点が円を回り出すのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dt-f'">周波数 f</label
+          <label :id="uid + '-dt-f-label'" :for="uid + '-dt-f'">周波数 f</label
           ><input
             :id="uid + '-dt-f'"
             type="range"
@@ -176,10 +176,10 @@ const uid = useId();
             max="3"
             step="0.5"
             value="1"
-          /><output data-o="f" />
+          /><output :for="uid + '-dt-f'" :aria-labelledby="uid + '-dt-f-label'" data-o="f" />
         </div>
         <div class="row">
-          <label :for="uid + '-dt-A'">振幅 A</label
+          <label :id="uid + '-dt-A-label'" :for="uid + '-dt-A'">振幅 A</label
           ><input
             :id="uid + '-dt-A'"
             type="range"
@@ -188,10 +188,10 @@ const uid = useId();
             max="1.5"
             step="0.01"
             value="1"
-          /><output data-o="A" />
+          /><output :for="uid + '-dt-A'" :aria-labelledby="uid + '-dt-A-label'" data-o="A" />
         </div>
         <div class="row">
-          <label :for="uid + '-dt-ph'">位相 φ</label
+          <label :id="uid + '-dt-ph-label'" :for="uid + '-dt-ph'">位相 φ</label
           ><input
             :id="uid + '-dt-ph'"
             type="range"
@@ -200,10 +200,10 @@ const uid = useId();
             max="180"
             step="5"
             value="30"
-          /><output data-o="ph" />
+          /><output :for="uid + '-dt-ph'" :aria-labelledby="uid + '-dt-ph-label'" data-o="ph" />
         </div>
         <div class="row">
-          <label :for="uid + '-dt-t'">時刻 t</label
+          <label :id="uid + '-dt-t-label'" :for="uid + '-dt-t'">時刻 t</label
           ><input
             :id="uid + '-dt-t'"
             type="range"
@@ -212,7 +212,7 @@ const uid = useId();
             max="10"
             step="any"
             value="0.15"
-          /><output data-o="t" />
+          /><output :for="uid + '-dt-t'" :aria-labelledby="uid + '-dt-t-label'" data-o="t" />
         </div>
         <div class="btns">
           <button type="button" data-play>▶ 再生</button

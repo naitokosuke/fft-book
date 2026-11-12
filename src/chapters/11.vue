@@ -24,7 +24,7 @@ const uid = useId();
       <p class="try-line">振幅比を動かして、10 倍ごとに 20 dB ずつ変わるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dd-e'">振幅比</label
+          <label :id="uid + '-dd-e-label'" :for="uid + '-dd-e'">振幅比</label
           ><input
             :id="uid + '-dd-e'"
             type="range"
@@ -33,7 +33,7 @@ const uid = useId();
             max="1"
             step="0.01"
             value="-1"
-          /><output data-o="e" />
+          /><output :for="uid + '-dd-e'" :aria-labelledby="uid + '-dd-e-label'" data-o="e" />
         </div>
       </div>
       <div class="plot h-100"><canvas data-c="a" /></div>
@@ -58,7 +58,7 @@ const uid = useId();
           </select>
         </div>
         <div class="row">
-          <label :for="uid + '-dn-A'">信号の振幅</label
+          <label :id="uid + '-dn-A-label'" :for="uid + '-dn-A'">信号の振幅</label
           ><input
             :id="uid + '-dn-A'"
             type="range"
@@ -67,7 +67,7 @@ const uid = useId();
             max="1"
             step="0.01"
             value="0.1"
-          /><output data-o="A" />
+          /><output :for="uid + '-dn-A'" :aria-labelledby="uid + '-dn-A-label'" data-o="A" />
         </div>
       </div>
       <div class="legend">
@@ -99,7 +99,7 @@ const uid = useId();
       <p class="try-line">ずれを 0 から 0.5 へ動かし、裾が一気に持ち上がるのを見る</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dl-dl'">ビンからのずれ</label
+          <label :id="uid + '-dl-dl-label'" :for="uid + '-dl-dl'">ビンからのずれ</label
           ><input
             :id="uid + '-dl-dl'"
             type="range"
@@ -108,7 +108,7 @@ const uid = useId();
             max="1"
             step="0.01"
             value="0.5"
-          /><output data-o="dl" />
+          /><output :for="uid + '-dl-dl'" :aria-labelledby="uid + '-dl-dl-label'" data-o="dl" />
         </div>
         <div class="sel">
           <label :for="uid + '-dl-win'">窓関数</label
@@ -247,7 +247,7 @@ const uid = useId();
       <p class="try-line">周波数の差を小さくしていき、2 つの山が 1 つにくっつく境目を探す</p>
       <div class="dc">
         <div class="row">
-          <label :for="uid + '-dr-d'">周波数の差</label
+          <label :id="uid + '-dr-d-label'" :for="uid + '-dr-d'">周波数の差</label
           ><input
             :id="uid + '-dr-d'"
             type="range"
@@ -256,7 +256,7 @@ const uid = useId();
             max="60"
             step="0.5"
             value="12"
-          /><output data-o="d" />
+          /><output :for="uid + '-dr-d'" :aria-labelledby="uid + '-dr-d-label'" data-o="d" />
         </div>
         <div class="sel">
           <label :for="uid + '-dr-N'">点数 N</label
